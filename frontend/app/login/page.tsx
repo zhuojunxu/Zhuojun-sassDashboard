@@ -30,6 +30,8 @@ export default function LoginPage() {
         },
       );
 
+      console.log("TOKEN:", token);
+
       const data = await response.json();
 
       if (!response.ok) {
