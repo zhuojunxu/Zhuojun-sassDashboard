@@ -32,13 +32,18 @@ export default function LoginPage() {
 
       console.log("TOKEN:", token);
 
-      const data = await response.json();
-
+      //const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.message || "Request failed");
+        throw new Error("Login failed");
       }
 
-      setResult(JSON.stringify(data, null, 2));
+      window.location.href = "/dashboard";
+
+      //if (!response.ok) {
+      //  throw new Error(data.message || "Request failed");
+      //}
+
+      //setResult(JSON.stringify(data, null, 2));
     } catch (error) {
       setResult(
         error instanceof Error ? error.message : "Something went wrong",
