@@ -98,6 +98,58 @@ Relationship:
 
 ---
 
+### 3）Indexing Strategy
+
+For the current small dataset, products are loaded and filtering/sorting are handled at client-side.
+
+Firestore's default single-field indexes are sufficient for the current implementation.
+
+If the dataset grows, filtering, sorting, and pagination would move to Firestore queries, and composite indexes would be added based on real query patterns, for example:
+
+- `status + createdAt`
+- `category + createdAt`
+- `status + price`
+
+I would only add composite indexes when required depending on the size of users and categories.
+
+### 4) Scaling to 10× More Products
+
+If the product dataset grows significantly, I would avoid loading the entire collection at once.
+
+The main changes would be:
+
+- server-side filtering and sorting
+- query limits
+- Firestore composite indexes for common query patterns
+- optimized dashboard metrics
+
+This would improve performance as the dataset grows.
+
+### 5) Multi-Tenancy Evolution
+
+The current application assumes a single tenant/department.
+
+To support multiple organizations, I would add a trusted `tenantId` to both users and products:
+
+```text
+users/{uid}
+  role
+  tenantId
+
+products/{productId}
+  name
+  category
+  price
+  status
+  tenantId
+  createdBy
+  createdAt
+  updatedAt
+
+After authentication, the backend would obtain the user's tenantId from the user profile and scope all product queries to that tenant.
+
+The client would not be trusted to choose the tenant used for authorization.
+
 ## Security Decisions
 
 Authentication and authorization are enforced end-to-end.
@@ -111,7 +163,7 @@ Authentication and authorization are enforced end-to-end.
 
 Role permissions:
 - `admin`: Can create, update, and delete products.
-- `viewer`: Can view products and dashboard data but cannot modify products.
+- `viewer`: Can only view products and dashboard data.
 
 Authorization is enforced on the backend rather than just frontend route protection.
 
