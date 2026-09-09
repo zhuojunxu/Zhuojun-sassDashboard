@@ -17,13 +17,13 @@ The project consists of a Next.js frontend and a Node.js/Express backend.
 
 ### 1. Clone the repository
 
-git clone https://github.com/zhuojunxu/Zhuojun-sassDashboard.git
-cd Zhuojun-sassDashboard
-cd frontend
-npm install
+- git clone https://github.com/zhuojunxu/Zhuojun-sassDashboard.git
+- cd Zhuojun-sassDashboard
+- cd frontend
+- npm install
 
-cd ../backend
-npm install
+- cd ../backend
+- npm install
 
 ### 2. Add the Firebase client configuration to `frontend/.env.local`.
 
