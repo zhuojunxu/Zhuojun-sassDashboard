@@ -50,9 +50,11 @@ export default function DashboardPage() {
     "all",
   );
 
-  const [sortBy, setSortBy] = useState<"name" | "price-low" | "price-high">(
-    "name",
-  );
+  const [sortBy, setSortBy] = useState<
+    | "Sort By name (A-Z)"
+    | "Sort By Price (Low->High)"
+    | "Sort By Price (High->Low)"
+  >("Sort By name (A-Z)");
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -220,15 +222,15 @@ export default function DashboardPage() {
       result = result.filter((product) => product.status === statusFilter);
     }
 
-    if (sortBy === "name") {
+    if (sortBy === "Sort By name (A-Z)") {
       result.sort((a, b) => a.name.localeCompare(b.name));
     }
 
-    if (sortBy === "price-low") {
+    if (sortBy === "Sort By Price (Low->High)") {
       result.sort((a, b) => a.price - b.price);
     }
 
-    if (sortBy === "price-high") {
+    if (sortBy === "Sort By Price (High->Low)") {
       result.sort((a, b) => b.price - a.price);
     }
 
@@ -348,6 +350,7 @@ export default function DashboardPage() {
 
       {/* Filtering / sorting */}
       <div className="mb-4 flex flex-wrap gap-3">
+        <p>Status: </p>
         <select
           className="rounded border p-2"
           value={statusFilter}
@@ -359,17 +362,22 @@ export default function DashboardPage() {
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
         </select>
-
+        <p>Sort by: </p>
         <select
           className="rounded border p-2"
           value={sortBy}
           onChange={(e) =>
-            setSortBy(e.target.value as "name" | "price-low" | "price-high")
+            setSortBy(
+              e.target.value as
+                | "Sort By name (A-Z)"
+                | "Sort By Price (Low->High)"
+                | "Sort By Price (Low->High)",
+            )
           }
         >
-          <option value="name">Name</option>
-          <option value="price-low">Price: Low to High</option>
-          <option value="price-high">Price: High to Low</option>
+          <option value="Sort By name (A-Z)">Name (A-Z)</option>
+          <option value="Sort By Price (Low->High)">Price (Low to High)</option>
+          <option value="Sort By Price (High->Low)">Price (High to Low)</option>
         </select>
       </div>
 
