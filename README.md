@@ -50,7 +50,7 @@ The application follows a simple client-server architecture:
 - **Database:** Cloud Firestore stores user role information and product data.
 
 ### Architecture Flow
-
+```
 Frontend (Next.js / React)
         |
         | Firebase ID Token
@@ -66,6 +66,7 @@ Firebase Admin SDK
         +----> Cloud Firestore
                - users
                - products
+```
 
 ## Database Schema
 
