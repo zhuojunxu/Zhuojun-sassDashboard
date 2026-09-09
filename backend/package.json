@@ -20,5 +20,10 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "jwks-rsa": {
+      "jose": "^4.15.9"
+    }
   }
 }
