@@ -41,7 +41,7 @@ Frontend (Terminal 2):
 - `cd frontend`
 - `npm run dev`
 
-Open `http://localhost:3000`.
+Open `http://localhost:3000/login`.
 
 ## Architecture Overview
 
