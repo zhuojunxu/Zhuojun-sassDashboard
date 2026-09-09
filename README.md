@@ -32,12 +32,16 @@ The project consists of a Next.js frontend and a Node.js/Express backend.
 
    > Credentials are excluded from Git for security.
 
-### 4. Start the backend and frontend:
-   - cd backend
-   - npx tsx src/index.ts
-   - cd ..
-   - cd frontend
-   - npm run dev
+### 4. Start the backend and frontend in 2 command terminals:
+Backend (Terminal 1):
+- `cd backend`
+- `npx tsx src/index.ts`
+
+Frontend (Terminal 2):
+- `cd frontend`
+- `npm run dev`
+
+Open `http://localhost:3000`.
 
 ## Architecture Overview
 
