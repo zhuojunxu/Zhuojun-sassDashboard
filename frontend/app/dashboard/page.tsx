@@ -39,6 +39,9 @@ const emptyForm: ProductForm = {
   status: "active",
 };
 
+export const API_URL =
+  process.env.NODE_ENV === "development" ? "http://localhost:5000" : "";
+
 export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null);
   const [role, setRole] = useState<Role | null>(null);
@@ -59,7 +62,7 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  //const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
   // Firebase session -> load role + products
   useEffect(() => {

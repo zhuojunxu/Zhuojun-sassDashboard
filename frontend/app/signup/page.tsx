@@ -4,13 +4,16 @@ import { FormEvent, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 
+export const API_URL =
+  process.env.NODE_ENV === "development" ? "http://localhost:5000" : "";
+
 export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  //const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
   async function handleSignup(e: FormEvent) {
     e.preventDefault();
