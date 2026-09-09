@@ -143,7 +143,8 @@ products/{productId}
   tenantId
   createdBy
   createdAt
-  updatedAt```
+  updatedAt
+```
 
 After authentication, the backend would obtain the user's tenantId from the user profile and scope all product queries to that tenant.
 
