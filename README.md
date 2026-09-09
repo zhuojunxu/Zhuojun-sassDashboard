@@ -41,7 +41,7 @@ Frontend (Terminal 2):
 - `cd frontend`
 - `npm run dev`
 
-Open `http://localhost:3000/login`.
+Open `http://localhost:3000/login` to sign in or create a new viewer account.
 
 ## Architecture Overview
 
